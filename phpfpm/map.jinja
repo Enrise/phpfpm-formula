@@ -1,0 +1,9 @@
+{% set phpfpm = salt['grains.filter_by']({
+    'Debian': {
+        'dirs': {
+          'config': '/etc/php5/fpm/pool.d',
+          'socket': '/var/run/phpfpm'
+        },
+
+    },
+}, merge=salt['pillar.get']('phpfpm:lookup'), default='Debian') %}
