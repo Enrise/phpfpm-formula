@@ -13,6 +13,10 @@ pm = ondemand
 pm.max_children = 5
 pm.process_idle_timeout = 10s
 
+; Monitoring
+pm.status_path = {{ pm_status_path|default('/status') }}
+ping.path = {{ ping_path|default('/ping') }}
+
 {%- if extra_config is defined %}
 ; Overrides
 {{ extra_config|join('\n') }}
