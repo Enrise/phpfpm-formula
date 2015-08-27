@@ -8,10 +8,17 @@ listen.owner = {{ listen|default('nginx') }}
 chdir = {{ chdir|default('/') }}
 php_flag[display_errors] = {{ display_errors|default('on') }}
 
-; Process Manager: Ondemand
-pm = ondemand
-pm.max_children = 5
-pm.process_idle_timeout = 10s
+; Process Manager
+pm = {{ fpm_params.pm|default('ondemand') }}
+pm.max_children = {{ fpm_params.pm_max_children|default(5) }}
+pm.process_idle_timeout = {{ fpm_params.process_idle_timeout|default(10) }}s
+
+{%- if (fpm_params is defined and 'pm' in fpm_params and fpm_params.pm == 'dynamic') %}
+pm.start_servers = {{ fpm_params.pm_start_servers|default(2) }}
+pm.min_spare_servers = {{ fpm_params.pm_min_spare_servers|default(1) }}
+pm.max_spare_servers = {{ fpm_params.pm_max_spare_servers|default(3) }}
+pm.max_requests = {{ fpm_params.pm_max_requests|default(250) }}
+{%- endif %}
 
 ; Monitoring
 pm.status_path = {{ pm_status_path|default('/status') }}
