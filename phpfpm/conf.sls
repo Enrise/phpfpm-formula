@@ -1,3 +1,8 @@
+{% set php_versions = salt['pillar.get']('phpfpm:php_versions', []) %}
+
+# Vanilla Ubuntu 14.04 packages
+{% if len(php_versions) == 0 %}
+
 {% from "phpfpm/map.jinja" import phpfpm as phpfpm_map with context %}
 
 # Ensure the FPM-Pool directory exists
@@ -19,3 +24,24 @@
   file.absent
 {%- endfor %}
 {%- endif %}
+
+# Alternative PHP versions as provided by Ondřej Surý
+{% else %}
+
+{% for php_version in php_versions %}
+
+# Create the pool folder (being used as dependency)
+/etc/php/{{ php_version }}/fpm/pool.d:
+  file.directory:
+    - recursive: True
+    - require:
+      - pkg: php{{ php_version }}-fpm
+
+/etc/php/{{ php_version }}/tmp:
+  file.directory:
+    - require:
+      - pkg: php{{ php_version }}-fpm
+
+{% endfor %}
+
+{% endif %}

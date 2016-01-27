@@ -15,7 +15,7 @@
       - user: {{ owner }}
     - watch_in:
     {%- if php_version %}
-      - service: php-fpm-{{ php_version }}
+      - service: php{{ php_version }}-fpm
     {%- else %}
       - service: php5-fpm
     {%- endif %}
