@@ -1,7 +1,7 @@
 {%- set php_versions = salt['pillar.get']('phpfpm:php_versions', []) %}
 
 # Vanilla Ubuntu 14.04 packages
-{% if len(php_versions) == 0 %}
+{% if php_versions|length == 0 %}
 
 # Extend the php-fpm and ensure the service is running
 extend:

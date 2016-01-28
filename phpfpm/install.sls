@@ -1,7 +1,7 @@
 {%- set php_versions = salt['pillar.get']('phpfpm:php_versions', []) %}
 
 # Vanilla PHP 5.5 bundled with Ubuntu 14.04
-{% if len(php_versions) == 0 %}
+{% if php_versions|length == 0 %}
 
 php5-fpm:
   pkg.installed: []
