@@ -8,3 +8,8 @@ phpfpm:
   config:
     # Do not remove default configs (required for Zend Server)
     cleanup: False
+
+  # Install additional PHP modules (for non-Zend Server installs)
+  modules:
+    - php5-gd
+    - php5-mcrypt
