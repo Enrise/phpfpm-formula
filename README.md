@@ -1,5 +1,7 @@
 # phpfpm-formula
 
+[![Travis branch](https://img.shields.io/travis/Enrise/phpfpm-formula/master.svg?style=flat-square)](https://travis-ci.org/Enrise/phpfpm-formula)
+
 This formula will install PHP-FPM.
 
 ## Compatibility
