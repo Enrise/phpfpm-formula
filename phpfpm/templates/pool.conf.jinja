@@ -6,7 +6,7 @@ group = {{ pool_group|default('www-data') }}
 listen.group = {{ listen|default('nginx') }}
 listen.owner = {{ listen|default('nginx') }}
 chdir = {{ chdir|default('/') }}
-php_flag[display_errors] = {{ display_errors|default('on') }}
+php_flag[display_errors] = {{ display_errors|default('off') }}
 
 ; Process Manager
 pm = {{ fpm_params.pm|default('ondemand') }}
