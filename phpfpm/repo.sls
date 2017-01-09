@@ -4,8 +4,10 @@
 
 # The destinaton file format add-apt-repository writes to has seeingly changed since Xenial, act accordingly
 {%- set repo_file = '/etc/apt/sources.list.d/ondrej-php-' ~ salt['grains.get']('oscodename') ~ '.list' %}
+{%- set ubuntu1604 = False %}
 {%- if salt['grains.get']('osfullname') == 'Ubuntu' and salt['grains.get']('osrelease')|float() >= 16.04 %}
 {%- set repo_file = '/etc/apt/sources.list.d/ondrej-ubuntu-php-' ~ salt['grains.get']('oscodename') ~ '.list' %}
+{%- set ubuntu1604 = True %}
 {%- endif %}
 
 # Workaround for adding PPA repositories with high level characters in their name.
@@ -16,6 +18,7 @@ ondrej-php-ppa:
     - name: LC_ALL=en_US.UTF-8 add-apt-repository -y ppa:ondrej/php && apt-get update
     - creates: {{ repo_file }}
 
+{%- if ubuntu1604 %}
 # Since the abovementioned repository also includes certain packages we prefer
 # not to be getting from that particukar repo (e.g. libzmq3, openssl) we're
 # lowering its priority.
@@ -24,4 +27,6 @@ ondrej-php-ppa:
     - source: salt://phpfpm/files/apt-pin-ondrej-php
     - require:
       - cmd: ondrej-php-ppa
+{%- endif %}
+
 {%- endif %}
