@@ -15,4 +15,13 @@ ondrej-php-ppa:
   cmd.run:
     - name: LC_ALL=en_US.UTF-8 add-apt-repository -y ppa:ondrej/php && apt-get update
     - creates: {{ repo_file }}
+
+# Since the abovementioned repository also includes certain packages we prefer
+# not to be getting from that particukar repo (e.g. libzmq3, openssl) we're
+# lowering its priority.
+/etc/apt/preferences.d/apt-pin-ondrej-php:
+  file.managed:
+    - source: salt://phpfpm/files/apt-pin-ondrej-php
+    - require:
+      - cmd: ondrej-php-ppa
 {%- endif %}
