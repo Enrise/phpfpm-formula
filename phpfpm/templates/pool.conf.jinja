@@ -1,6 +1,6 @@
 {%- from "phpfpm/map.jinja" import phpfpm as phpfpm_map with context %}
 [{{ pool_name }}]
-listen = {{ socket_dir }}/fpm_$pool.sock
+listen = {{ socket_dir|default('/var/run') }}/fpm_$pool.sock
 user = {{ pool_user|default('www-data') }}
 group = {{ pool_group|default('www-data') }}
 listen.owner = {{ listen_owner|default('nginx') }}
