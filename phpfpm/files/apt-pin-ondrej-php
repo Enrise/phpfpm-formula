@@ -1,0 +1,10 @@
+# Decrease default priority to prevent stuff (e.g. libzmq5, libopenssl)
+# to be installed from this repo
+Package: *
+Pin: release o=LP-PPA-ondrej-php
+Pin-Priority: 400
+
+# Allow the PHP packages to be installed from Ondrej's repo
+Package: php*
+Pin: release o=LP-PPA-ondrej-php
+Pin-Priority: 500
