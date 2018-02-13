@@ -7,4 +7,3 @@ phpfpm:
     - php{{ php_version }}-curl
     - php{{ php_version }}-gd
     - php{{ php_version }}-json
-{% endfor %}
