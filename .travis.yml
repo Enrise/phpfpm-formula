@@ -8,11 +8,12 @@ env:
     - BS_ECHO_DEBUG=1
     - STATE=phpfpm
   matrix:
-    - SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/vanilla --file-root=$PWD"
     - SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/ondrej-php5.6 --file-root=$PWD"
     - SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/ondrej-php7.0 --file-root=$PWD"
     - SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/ondrej-php7.1 --file-root=$PWD"
     - SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/ondrej-php7.2 --file-root=$PWD"
+    allow_failures:
+      - SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/vanilla --file-root=$PWD"
 
 before_install:
   - sudo apt-get update
