@@ -23,8 +23,8 @@ The lookup part (commented in pillar.example) is **required** when using non-def
 
 ## PHP-FPM Versions
 
-The phpfpm formula recognizes either the vanilla PHP-FPM installation (5.5 on Ubuntu 14.04), or any combination of PHP-FPM 5.6 and PHP-FPM 7, provided by Ondřej Surý via the PPA.
-When specified, either PHP 5.6, PHP-FPM 7.0, or a combination of both will be installed.
+The phpfpm formula recognizes either the vanilla PHP-FPM installation (5.5 on Ubuntu 14.04), or any combination of PHP-FPM 5.6 and PHP-FPM 7.x, provided by Ondřej Surý via the PPA.
+When specified, either PHP 5.6, PHP-FPM 7.x, or a combination of these will be installed.
 
 Ubuntu 16.04 has not been tested yet, because at the time of writing, it hasn't been released yet.
 
