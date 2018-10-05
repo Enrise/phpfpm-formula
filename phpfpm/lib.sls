@@ -17,6 +17,6 @@
     {%- if php_version %}
       - service: php{{ php_version }}-fpm
     {%- else %}
-      - service: php5-fpm
+      - service: php-fpm
     {%- endif %}
 {% endmacro -%}

@@ -3,7 +3,7 @@
 
 {% if php_versions|length == 0 and webserver_edition == 'vanilla' %}
 # Vanilla PHP 5.5 bundled with Ubuntu 14.04
-php5-fpm:
+php-fpm:
   pkg.installed: []
 {%- endif %}
 

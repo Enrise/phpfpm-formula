@@ -3,7 +3,7 @@
 {% if webserver_edition == 'zendserver' %}
 {%- set req_pkg = 'zendserver' %}
 {%- else %}
-{%- set req_pkg = 'php5-fpm' %}
+{%- set req_pkg = 'php-fpm' %}
 {%- endif %}
 
 # Vanilla Ubuntu 14.04 packages

@@ -3,14 +3,14 @@
 {% if webserver_edition == 'zendserver' %}
 {%- set watch_pkg = 'zendserver' %}
 {%- else %}
-{%- set watch_pkg = 'php5-fpm' %}
+{%- set watch_pkg = 'php-fpm' %}
 {%- endif %}
 
 extend:
 # Vanilla Ubuntu 14.04 packages
 {% if php_versions|length == 0 %}
 # Extend the php-fpm and ensure the service is running
-  php5-fpm:
+  php-fpm:
     service.running:
       - enable: True
       #- reload: True # disabled due to php-fpm upstream issues
