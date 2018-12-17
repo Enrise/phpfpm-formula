@@ -10,6 +10,6 @@ Pin: release o=LP-PPA-ondrej-php
 Pin-Priority: 500
 
 # Allow the dependency packages to be installed from Ondrej's repo
-Package: libpcre3
+Package: libpcre*
 Pin: release o=LP-PPA-ondrej-php
 Pin-Priority: 500
