@@ -8,7 +8,7 @@
 
 extend:
 # Vanilla Ubuntu 14.04 packages
-{% if php_versions|length == 0 %}
+{% if php_versions|length == 0 and webserver_edition == 'vanilla' %}
 # Extend the php-fpm and ensure the service is running
   php-fpm:
     service.running:
