@@ -24,7 +24,7 @@ pm.max_requests = {{ fpm_params.pm_max_requests|default(250) }}
 pm.status_path = {{ pm_status_path|default('/status') }}
 ping.path = {{ ping_path|default('/ping') }}
 
-{%- if extra_config is defined %}
+{% if fpm_params is defined and 'extra_config' in fpm_params %}
 ; Overrides
-{{ extra_config|join('\n') }}
+{{ fpm_params.extra_config|join('\n') }}
 {%- endif %}
