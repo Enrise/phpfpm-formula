@@ -18,3 +18,8 @@ Pin-Priority: 500
 Package: libzip*
 Pin: release o=LP-PPA-ondrej-php
 Pin-Priority: 500
+
+# Allow the dependency packages to be installed from Ondrej's repo
+Package: libgd3*
+Pin: release o=LP-PPA-ondrej-php
+Pin-Priority: 500
